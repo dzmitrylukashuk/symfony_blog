@@ -33,3 +33,14 @@ services:
     # AppBundle\Service\ExampleService:
     #     arguments:
     #         $someArgument: 'some_value'
+
+    # makes classes in src/AppBundle/DataFixtures available to be used as services
+    # and have a tag that allows actions to type-hint services
+
+    CategoryBundle\DataFixtures\:
+        resource: '../../src/CategoryBundle/DataFixtures'
+        tags: ['doctrine.fixture.orm']
+
+    PageBundle\DataFixtures\:
+        resource: '../../src/PageBundle/DataFixtures'
+        tags: ['doctrine.fixture.orm']
