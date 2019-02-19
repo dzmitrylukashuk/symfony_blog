@@ -44,3 +44,7 @@ services:
     PageBundle\DataFixtures\:
         resource: '../../src/PageBundle/DataFixtures'
         tags: ['doctrine.fixture.orm']
+
+    CommentBundle\DataFixtures\:
+        resource: '../../src/CommentBundle/DataFixtures'
+        tags: ['doctrine.fixture.orm']
