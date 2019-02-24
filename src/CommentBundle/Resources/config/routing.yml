@@ -1,0 +1,14 @@
+#comment_list:
+#    path: /comment
+#
+#comment_add:
+#    path: /comment/add
+#
+#comment_view:
+#    path: /comment/{id}
+#
+#comment_edit:
+#    path: /comment/{id}/edit
+#
+#comment_delete:
+#    path: /comment/{id}/delete

@@ -4,3 +4,9 @@ app:
 
 page:
     resource: '@PageBundle/Resources/config/routing.yml'
+
+category:
+    resource: '@CategoryBundle/Resources/config/routing.yml'
+
+comment:
+    resource: '@CommentBundle/Resources/config/routing.yml'

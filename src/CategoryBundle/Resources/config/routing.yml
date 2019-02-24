@@ -1,0 +1,14 @@
+#category_list:
+#    path: /category
+#
+#category_add:
+#    path: /category/add
+#
+#category_view:
+#    path: /category/{id}
+#
+#category_edit:
+#    path: /category/{id}/edit
+#
+#category_delete:
+#    path: /category/{id}/delete
