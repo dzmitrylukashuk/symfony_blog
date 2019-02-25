@@ -1,0 +1,13 @@
+{% extends '@App/Layout/layout-two-col-4-8.html.twig' %}
+
+{% block regionRight %}
+    <div class="block block--category-list">
+        <div class="block-content">
+            <div class="list list--category-list">
+                {% for category in categories %}
+                    {{ include('@Category/ViewMode/teaser.html.twig', {'item' : category}) }}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,5 @@
+<div class="fields">
+    <div class="field field-name">{{ item }}</div>
+    {% set path = path('category_view', {'id' : item.id }) %}
+    <div class="field field-category-link"><a href="{{ path }}">Read more</a></div>
+</div>

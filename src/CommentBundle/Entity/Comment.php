@@ -2,13 +2,13 @@
 
 namespace CommentBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use PageBundle\Entity\Page;
 
 /**
  * Class Comment
  * @package CommentBundle\Entity
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="CommentBundle\Repository\CommentRepository")
  * @ORM\Table(name="comment")
  */
 class Comment {
@@ -26,10 +26,10 @@ class Comment {
     private $comment;
 
     /**
-     * @ORM\ManyToMany(targetEntity="\PageBundle\Entity\Page", inversedBy="comments")
-     * @ORM\JoinTable(name="pages_comments")
+     * @ORM\ManyToOne(targetEntity="\PageBundle\Entity\Page", inversedBy="comments")
+     * @ORM\JoinColumn(name="page_id", referencedColumnName="id")
      */
-    private $pages;
+    private $page;
 
     /**
      * @ORM\Column(type="datetime")
@@ -38,7 +38,6 @@ class Comment {
 
     public function __construct() {
         $this->date_add = new \DateTime();
-        $this->pages = new ArrayCollection();
     }
 
     /**
@@ -100,37 +99,25 @@ class Comment {
     }
 
     /**
-     * Add page
+     * Set page
      *
      * @param \PageBundle\Entity\Page $page
      *
      * @return Comment
      */
-    public function addPage(\PageBundle\Entity\Page $page)
+    public function setPage(\PageBundle\Entity\Page $page)
     {
-        $this->pages[] = $page;
-//        $page->addComment($this);
-
+        $this->page = $page;
         return $this;
     }
 
     /**
-     * Remove page
+     * Get page
      *
-     * @param \PageBundle\Entity\Page $page
+     * @return Page
      */
-    public function removePage(\PageBundle\Entity\Page $page)
+    public function getPage()
     {
-        $this->pages->removeElement($page);
-    }
-
-    /**
-     * Get pages
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getPages()
-    {
-        return $this->pages;
+        return $this->page;
     }
 }

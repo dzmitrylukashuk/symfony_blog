@@ -1,14 +1,25 @@
-#category_list:
-#    path: /category
-#
-#category_add:
-#    path: /category/add
-#
-#category_view:
-#    path: /category/{id}
-#
-#category_edit:
-#    path: /category/{id}/edit
-#
-#category_delete:
-#    path: /category/{id}/delete
+category_list:
+    path: /category
+    defaults: { _controller: CategoryBundle:Category:list }
+
+category_add:
+    path: /category/add
+    defaults: { _controller: CategoryBundle:Category:add }
+
+category_view:
+    path: /category/{id}
+    defaults: { _controller: CategoryBundle:Category:view }
+    requirements:
+        page: '\d+'
+
+category_edit:
+    path: /category/{id}/edit
+    defaults: { _controller: CategoryBundle:Category:edit }
+    requirements:
+        category: '\d+'
+
+category_delete:
+    path: /category/{id}/delete
+    defaults: { _controller: CategoryBundle:Category:remove }
+    requirements:
+        category: '\d+'

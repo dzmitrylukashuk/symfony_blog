@@ -7,7 +7,21 @@
             <div class="field field-body">{{ page.body }}</div>
             <div class="field field-category">{{ page.category.name }}</div>
             <div class="field field-date_add">{{ page.dateAdd|date('d-m-Y') }}</div>
-            <div class="field field-comments">{{ include('@Comment/lists.html.twig', {'items' : page.comments }) }}</div>
+            <div class="field field-comments">
+                <div class="comment-preview">
+                    <h2 class="comment-title">Comments</h2>
+                    {{ form(comment_form) }}
+                    <div class="list">
+                        {% for comment in page.comments %}
+                            <div class="list-item">
+                                {{ include('@Comment/ViewMode/teaser.html.twig', {'item' : comment}) }}
+                                <li><a href="{{ path('comment_edit', { 'id' : comment.id }) }}">Edit</a></li>
+                                <li><a href="{{ path('comment_delete', { 'id' : comment.id }) }}">Delete</a></li>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}
