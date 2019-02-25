@@ -4,15 +4,11 @@
     <div class="block block--page-view">
         <div class="block-content">
             <h2 class="field field-title">{{ page.title }}</h2>
-            <div class="field field-body">{{ page.body }}</div>
-            <div class="field field-category">{{ page.category.name }}</div>
-            <div class="field field-date_add">{{ page.dateAdd|date('d-m-Y') }}</div>
             <div class="field field-comments">
                 <div class="comment-preview">
                     <h2 class="comment-title">Comments</h2>
-                    {{ form(comment_form) }}
                     <div class="list">
-                        {% for comment in page_comments %}
+                        {% for comment in comments %}
                             <div class="list-item">
                                 {{ include('@Comment/ViewMode/teaser.html.twig', {'item' : comment}) }}
                                 <li><a href="{{ path('comment_edit', { 'id' : comment.id }) }}">Edit</a></li>
@@ -22,6 +18,17 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="block-navigation">
+            <ul class="pager">
+                {% if navigator.pager > 1 %}
+                    <li class="comment-item"><a href="{{ path('page_comments', { 'id': page.id, 'pager' : navigator.pager - 1}) }}">back</a></li>
+                {% endif %}
+                <li class="pager-item">{{ navigator.pager }}</li>
+                {% if navigator.pager * navigator.limit < navigator.total %}
+                    <li class="comment-item"><a href="{{ path('page_comments', { 'id': page.id, 'pager' : navigator.pager + 1}) }}">next</a></li>
+                {% endif %}
+            </ul>
         </div>
     </div>
 {% endblock %}

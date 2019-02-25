@@ -14,6 +14,7 @@ page_view:
 
 page_comments:
     path: /page/{id}/comments
+    defaults: { _controller: PageBundle:Page:comments }
     requirements:
         page: '\d+'
 
